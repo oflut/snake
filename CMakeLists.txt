@@ -21,6 +21,7 @@ set(SOURCE_FILES
 set(HEADER_FILES
     include/snake.h
     include/food.h
+    include/game.h
 )
 
 # macOS specific settings
@@ -43,7 +44,7 @@ endif()
 if(WIN32)
     # Raylib for Windows (assuming it's installed or will be fetched)
     find_package(raylib QUIET)
-    
+
     if (NOT raylib_FOUND)
         include(FetchContent)
         FetchContent_Declare(
@@ -54,10 +55,10 @@ if(WIN32)
     endif()
 
     # Add the executable for Windows
-    add_executable(SNAKE_WIN ${SOURCE_FILES} ${HEADER_FILES})
+    add_executable(SNAKE ${SOURCE_FILES} ${HEADER_FILES})
 
     # Link Raylib for Windows
-    target_link_libraries(SNAKE_WIN raylib)
+    target_link_libraries(SNAKE raylib)
 endif()
 
 # Include directories for both targets
